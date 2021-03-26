@@ -1,0 +1,82 @@
+C:\Windows\System32\DriverStore\FileRepository\nv_dispi.inf_amd64_5be8de9f3373beaf>
+
+> nvidia-smi --query-gpu=index,timestamp,power.draw,clocks.sm,clocks.mem,clocks.gr --format=csv -l 1
+index, timestamp, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz], clocks.current.graphics [MHz]
+0, 2021/03/25 10:58:57.166, 131.87 W, 1620 MHz, 8250 MHz, 1620 MHz
+0, 2021/03/25 10:58:58.183, 131.56 W, 1500 MHz, 8250 MHz, 1500 MHz
+0, 2021/03/25 10:58:59.205, 131.54 W, 1485 MHz, 8250 MHz, 1485 MHz
+0, 2021/03/25 10:59:00.219, 131.71 W, 1455 MHz, 8250 MHz, 1455 MHz
+
+> nvidia-smi -q -d CLOCK
+==============NVSMI LOG==============
+
+Timestamp                                 : Thu Mar 25 11:02:48 2021
+Driver Version                            : 461.92
+CUDA Version                              : 11.2
+
+Attached GPUs                             : 1
+GPU 00000000:01:00.0
+    Clocks
+        Graphics                          : 1515 MHz
+        SM                                : 1515 MHz
+        Memory                            : 8250 MHz
+        Video                             : 1335 MHz
+    Max Clocks
+        Graphics                          : 2100 MHz
+        SM                                : 2100 MHz
+        Memory                            : 7001 MHz
+        Video                             : 1950 MHz
+
+
+nvidia-smi.lnk -q --display=POWER
+
+==============NVSMI LOG==============
+
+Timestamp                                 : Fri Mar 26 11:23:42 2021
+Driver Version                            : 461.92
+CUDA Version                              : 11.2
+
+Attached GPUs                             : 1
+GPU 00000000:01:00.0
+    Power Readings
+        Power Management                  : Supported
+        Power Draw                        : 127.44 W
+        Power Limit                       : 127.60 W
+        Default Power Limit               : 220.00 W
+        Enforced Power Limit              : 127.60 W
+        Min Power Limit                   : 100.00 W
+        Max Power Limit                   : 240.00 W
+    Power Samples
+        Duration                          : 18446744073709.51 sec
+        Number of Samples                 : 119
+        Max                               : 130.96 W
+        Min                               : 120.29 W
+        Avg                               : 0.00 W
+
+
+> nvidia-smi.exe dmon
+# gpu   pwr gtemp mtemp    sm   mem   enc   dec  mclk  pclk
+# Idx     W     C     C     %     %     %     %   MHz   MHz
+    0   131    56     -   100   100     0     0  8250  1485
+    0   131    56     -   100   100     0     0  8250  1455
+    0   131    56     -   100   100     0     0  8250  1470
+    0   131    56     -   100   100     0     0  8250  1485
+
+
+Core Clock 
+C:\Users\Ferris\Desktop>nvidia-smi.lnk -lgc 800,800
+GPU clocks set to "(gpuClkMin 800, gpuClkMax 800)" for GPU 00000000:01:00.0
+All done.
+
+
+
+OVERCLOCK MEMORY
+nvoclock-0.0.3-win64.exe set pstate -c memory 1200000 //= +1200MHz
+
+SET POWERLIMIT
+nvidia-smi -pl 132
+Power limit for GPU 00000000:01:00.0 was set to 132.00 W from 130.00 W.
+All done.
+
+SET POWERLIMIT 2
+nvoclock-0.0.3-win64.exe set -P 60	//in %
