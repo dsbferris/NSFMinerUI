@@ -8,7 +8,7 @@ namespace NSFMinerUI
     public static class Overclock
     {
         private const string username = "Administrator";
-        private const string password = "PASSWORD";
+        private const string password = "YOUR PASSWORD!";
 
         /// <summary>
         /// Sets GPU Memory Clock offset
