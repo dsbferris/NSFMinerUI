@@ -3,7 +3,7 @@
 ### What is this?
 NSFMinerUI provides a simple GUI for the NSFMiner with additional features focusing on stability and maximum efficency.
 
-### Core Elements
+### Core features
 Target of NSFMinerUI is to provide stable 24/7 experience, with problems being caught automatically. (In best case ;)
 It features:
 * Overclocking of Memory
@@ -12,6 +12,7 @@ It features:
 * DAG Generated Detection to apply Overclock [DGD]
 * Automated restart of Miner or whole System
 * Clean Epoch switching with new DAG
+* Ping test for choosing best address/location of your pool
 * (Event based system with custom actions)
 
 ### Limitations
@@ -19,12 +20,24 @@ Written in C# it currently onyl supports Windows.
 As of I only own a RTX 3070 and no AMD Card, currently only NVIDIA is tested/supported.
 Also, don't expect to get higher Hashrates, this ain't downloadmorehashrate.com...
 
-### My Intended Use-Case
 
+### My intended use-case
+Originally made for myself and a friend.
+Both of us hooked ourself up with a new GPU (lucky we got one) and found out it would be profitable to mine ETH while sleeping or else being afk.
+Doing this on our Gaming PC we tested a lot with overclocks and powerlimits, process priority and so on.
+We also experienced mining >12hrs with 100% rejected shares, yes due to too high overclock, but hell, it is usually working and I want to squeeze out every little bit VMem Clock aka. Hashrate. 
+
+### Usage
+TODO when finished coding ;)
+
+
+### Found a bug?
+Feel free to open up an Issue here.
 
 ### But I want feature XY
-Clone, open up in Visual Studio and feel free to extend to your needs.
-I never really worked with Git and my coding experience is limited, be feel free to make pull requests if you want to share your extends.
+1. Open up and Issue and tell me why you think this is an essential feature.
+2. Clone, open up in Visual Studio and feel free to extend to your needs.
+Note: I never really worked with Git and my coding experience is limited, be feel free to make pull requests if you want to share your extends.
 
 ### BIG THANKS
 Thanks to NVOClock for providing NVAPI CLI to apply memory overclock.
