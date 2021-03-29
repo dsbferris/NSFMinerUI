@@ -54,7 +54,7 @@ namespace NSFMinerUI
             this.richTextBox1.Location = new System.Drawing.Point(12, 12);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(776, 310);
+            this.richTextBox1.Size = new System.Drawing.Size(886, 419);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
@@ -62,7 +62,7 @@ namespace NSFMinerUI
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(696, 341);
+            this.label1.Location = new System.Drawing.Point(806, 450);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 21);
             this.label1.TabIndex = 1;
@@ -71,7 +71,7 @@ namespace NSFMinerUI
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(696, 369);
+            this.textBox1.Location = new System.Drawing.Point(806, 478);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(92, 29);
             this.textBox1.TabIndex = 2;
@@ -81,7 +81,7 @@ namespace NSFMinerUI
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(626, 341);
+            this.label3.Location = new System.Drawing.Point(736, 450);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 21);
             this.label3.TabIndex = 4;
@@ -91,7 +91,7 @@ namespace NSFMinerUI
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(614, 372);
+            this.label4.Location = new System.Drawing.Point(724, 481);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 21);
             this.label4.TabIndex = 5;
@@ -101,7 +101,7 @@ namespace NSFMinerUI
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(532, 405);
+            this.label2.Location = new System.Drawing.Point(642, 514);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(158, 21);
             this.label2.TabIndex = 6;
@@ -110,7 +110,7 @@ namespace NSFMinerUI
             // textBox2
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(696, 402);
+            this.textBox2.Location = new System.Drawing.Point(806, 511);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(92, 29);
             this.textBox2.TabIndex = 7;
@@ -120,7 +120,7 @@ namespace NSFMinerUI
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(452, 434);
+            this.label5.Location = new System.Drawing.Point(562, 543);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(238, 21);
             this.label5.TabIndex = 9;
@@ -130,7 +130,7 @@ namespace NSFMinerUI
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(721, 434);
+            this.label6.Location = new System.Drawing.Point(831, 543);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 21);
             this.label6.TabIndex = 8;
@@ -139,7 +139,7 @@ namespace NSFMinerUI
             // textBox3
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox3.Location = new System.Drawing.Point(105, 328);
+            this.textBox3.Location = new System.Drawing.Point(105, 437);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(465, 29);
             this.textBox3.TabIndex = 10;
@@ -148,7 +148,7 @@ namespace NSFMinerUI
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 331);
+            this.label7.Location = new System.Drawing.Point(12, 440);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 21);
             this.label7.TabIndex = 11;
@@ -158,7 +158,7 @@ namespace NSFMinerUI
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 372);
+            this.label8.Location = new System.Drawing.Point(12, 481);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(163, 21);
             this.label8.TabIndex = 12;
@@ -175,7 +175,7 @@ namespace NSFMinerUI
             "Profil 3",
             "Profil 4",
             "Profil 5"});
-            this.comboBox1.Location = new System.Drawing.Point(181, 368);
+            this.comboBox1.Location = new System.Drawing.Point(181, 477);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(124, 29);
             this.comboBox1.TabIndex = 13;
@@ -183,7 +183,7 @@ namespace NSFMinerUI
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(12, 412);
+            this.button1.Location = new System.Drawing.Point(12, 521);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 40);
             this.button1.TabIndex = 14;
@@ -195,7 +195,7 @@ namespace NSFMinerUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 464);
+            this.ClientSize = new System.Drawing.Size(910, 573);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label8);

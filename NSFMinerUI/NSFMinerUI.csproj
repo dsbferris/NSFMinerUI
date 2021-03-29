@@ -19,10 +19,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Executables\nsfminer.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="nvoclock-0.0.3-win64.exe">
+    <None Update="Executables\nvoclock-0.0.3-win64.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">
