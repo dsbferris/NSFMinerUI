@@ -51,7 +51,7 @@ namespace NSFMinerUI
                 }
             });
             Overclock.GetGpuInfo(0, handler);
-            var gpuInfo = Overclock.GpuInfoToClass(sb.ToString());
+            var gpuInfo = Overclock.GpuInfoStringToClass(sb.ToString());
 
             setPowerLimitControls(gpuInfo.PowerPercent);
             setMemoryControls(gpuInfo.MemoryClockDelta);
@@ -59,7 +59,7 @@ namespace NSFMinerUI
             //richTextBox1.Text = sb.ToString();
         }
 
-        void setPowerLimitControls(MinMaxDefault power)
+        void setPowerLimitControls(MinMaxDefaultSelected power)
         {
             TBPower.Maximum = power.Max;
             TBPower.Minimum = power.Min;
@@ -69,7 +69,7 @@ namespace NSFMinerUI
             NumPower.Value = power.Default;
         }
 
-        void setMemoryControls(MinMaxDefault mem)
+        void setMemoryControls(MinMaxDefaultSelected mem)
         {
             TBMemory.Maximum = mem.Max;
             TBMemory.Minimum = mem.Min;

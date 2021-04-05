@@ -7,60 +7,38 @@ namespace NSFMinerUI
 {
     public static class Overclock
     {
-
         public const string NVOClockPath = @"Executables\nvoclock-0.0.3-win64.exe";
-
 
         public static void SetMemoryClock(int offset)
         {
             if (offset > 1500) throw new Exception("Offset too big and not supported!");
-
             offset *= 1000; //We need offset in KHz for NVOClock
 
-            using Process p = new Process();
-            ProcessStartInfo psi = p.StartInfo;
-            psi.CreateNoWindow = true;
-            psi.UseShellExecute = false;
-            psi.FileName = NVOClockPath;
-            psi.Arguments = "set pstate -c memory " + offset.ToString();
-            //psi.RedirectStandardOutput = true;
-            p.StartInfo = psi;
-            //p.OutputDataReceived += P_OutputDataReceived;
-            //p.Start();
-            //p.BeginOutputReadLine();
-            //p.Start();
-            AdminProcessExecution.StartAsAdmin(p);
+            using var p = new AdminProcess() { StartInfo = new ProcessStartInfo(NVOClockPath, "set pstate -c memory " + offset) };
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.UseShellExecute = false;
+            p.StartAsAdminAndWait();
             p.WaitForExit();
         }
 
         public static void SetPowerlimit(int percent)
         {
-            using Process p = new Process();
-            ProcessStartInfo psi = p.StartInfo;
-            psi.CreateNoWindow = true;
-            psi.UseShellExecute = false;
-            psi.FileName = NVOClockPath;
-            psi.Arguments = "set -P " + percent;
-            psi.RedirectStandardOutput = true;
-            p.StartInfo = psi;
-            //AdminProcessExecution.StartAsAdmin(p);
-            //p.OutputDataReceived += P_OutputDataReceived;
+            using Process p = new Process() { StartInfo = new ProcessStartInfo(NVOClockPath, "set -P " + percent) };
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.UseShellExecute = false;
             p.Start();
             p.WaitForExit();
-            //p.BeginOutputReadLine();
         }
 
         public static void ListGpus(DataReceivedEventHandler receivedEventHandler)
         {
-            using Process p = new Process();
-            ProcessStartInfo psi = p.StartInfo;
-            psi.WindowStyle = ProcessWindowStyle.Hidden;
-            psi.UseShellExecute = false;
-            psi.FileName = NVOClockPath;
-            psi.Arguments = "list";
-            psi.RedirectStandardOutput = true;
-            p.StartInfo = psi;
+            using Process p = new Process() { StartInfo = new ProcessStartInfo(NVOClockPath, "list") };
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.UseShellExecute = false;
+
+            p.StartInfo.RedirectStandardOutput = true;
             p.OutputDataReceived += receivedEventHandler;
+
             p.Start();
             p.BeginOutputReadLine();
             p.WaitForExit();
@@ -68,24 +46,23 @@ namespace NSFMinerUI
 
         public static void GetGpuInfo(uint index, DataReceivedEventHandler receivedEventHandler)
         {
-            using Process p = new Process();
-            ProcessStartInfo psi = p.StartInfo;
-            psi.WindowStyle = ProcessWindowStyle.Hidden;
-            psi.UseShellExecute = false;
-            psi.FileName = NVOClockPath;
-            //index = 1; //test for stdout or stderr
-            psi.Arguments = " --gpu=" + index + " -O json info";
-            psi.RedirectStandardOutput = true;
-            psi.RedirectStandardError = true;
-            p.StartInfo = psi;
+            using Process p = new Process() { StartInfo = new ProcessStartInfo(NVOClockPath, " --gpu=" + index + " -O json info") };
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.UseShellExecute = false;
+
+            p.StartInfo.RedirectStandardOutput = true;
             p.OutputDataReceived += receivedEventHandler;
+
+            p.StartInfo.RedirectStandardError = true;
             p.ErrorDataReceived += receivedEventHandler;
+
             p.Start();
             p.BeginOutputReadLine();
+            p.BeginErrorReadLine();
             p.WaitForExit();
         }
 
-        public static GpuInfo GpuInfoToClass(string info)
+        public static GpuInfo GpuInfoStringToClass(string info)
         {
             GpuInfo gpuInfo = new GpuInfo();
             var state = ReadingState.Inital;
@@ -141,17 +118,14 @@ namespace NSFMinerUI
 
         public static Process StartMonitor(DataReceivedEventHandler receivedEventHandler)
         {
+            using Process p = new Process() { StartInfo = new ProcessStartInfo("nvidia-smi", "dmon -s puc -o T") };
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.UseShellExecute = false;
             //sadly nvoclock status is broken
             //so we gotta be using nvida-smi
-            //string smipath = GetSMIPath();
-            string smipath = "nvidia-smi";
-            Process p = new Process();
-            p.StartInfo.FileName = smipath;
-            p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
-            p.StartInfo.Arguments = "dmon -s puc -o T";
-            p.StartInfo.CreateNoWindow = true;
             p.OutputDataReceived += receivedEventHandler;
+
             p.Start();
             p.BeginOutputReadLine();
             return p;
@@ -169,15 +143,41 @@ namespace NSFMinerUI
 
     public class GpuInfo
     {
-        public MinMaxDefault PowerPercent = new MinMaxDefault();
-        public MinMaxDefault MemoryClockDelta = new MinMaxDefault();
+        public MinMaxDefaultSelected PowerPercent = new MinMaxDefaultSelected();
+        public MinMaxDefaultSelected MemoryClockDelta = new MinMaxDefaultSelected();
 
+        public GpuInfo(MinMaxDefaultSelected powerPercent, MinMaxDefaultSelected memoryClockDelta)
+        {
+            PowerPercent = powerPercent ?? throw new ArgumentNullException(nameof(powerPercent));
+            MemoryClockDelta = memoryClockDelta ?? throw new ArgumentNullException(nameof(memoryClockDelta));
+        }
+        public GpuInfo()
+        {
+        }
     }
 
-    public class MinMaxDefault
+    public class MinMaxDefaultSelected
     {
-        public int Min;
-        public int Max;
-        public int Default;
+        private int min;
+        private int max;
+        private int @default;
+        private int selected;
+
+        public int Min { get => min; set => min = value; }
+        public int Max { get => max; set => max = value; }
+        public int Default { get => @default; set => @default = value; }
+        public int Selected { get => selected; set => selected = value; }
+
+        public MinMaxDefaultSelected(int min, int max, int @default, int selected)
+        {
+            Min = min;
+            Max = max;
+            Default = @default;
+            Selected = selected;
+        }
+
+        public MinMaxDefaultSelected()
+        {
+        }
     }
 }
