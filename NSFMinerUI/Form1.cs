@@ -57,7 +57,7 @@ namespace NSFMinerUI
                 RedirectStandardOutput = true,
                 CreateNoWindow = true,
                 FileName = @"F:\nsfminer_1.3.8-windows_10-cuda_11.2-opencl\nsfminer.exe",
-                Arguments = @"-P stratum1+tcp://***REMOVED***@eth-eu2.nanopool.org:9999/minertest/***REMOVED***"
+                Arguments = @"-P stratum1+tcp://wallet@eth-eu2.nanopool.org:9999/minertest/email"
             };
             psi.WorkingDirectory = Path.GetDirectoryName(psi.FileName);
             p.StartInfo = psi;

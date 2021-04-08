@@ -1,0 +1,17 @@
+log = ""
+with open("F:\\nsfminer_1.3.8-windows_10-cuda_11.2-opencl\\log.txt", "r") as log_file: 
+    log = log_file.read()
+    
+log = log.replace("[37m", "")
+log = log.replace("[97m", "")
+log = log.replace("[0m", "")
+log = log.replace("[32m", "")
+log = log.replace("[36m", "")
+log = log.replace("[93m", "")
+log = log.replace("[1;97m", "")
+log = log.replace("[91m", "")
+log = log.replace("[1;36m", "")
+log = log.replace("[92m", "")
+with open("F:\\nsfminer_1.3.8-windows_10-cuda_11.2-opencl\\cleanlog.txt", "w") as clean_log_file:
+    clean_log_file.write(log)
+    
